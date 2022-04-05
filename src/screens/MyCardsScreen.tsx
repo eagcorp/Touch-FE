@@ -1,33 +1,55 @@
-import {StyleSheet, Text, View} from 'react-native';
+import React, {Component} from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import testMainLogo from '../../assets/images/test_main_logo.png';
 
 const MyCardsScreen = () => {
   return (
     <View style={styles.testConteiner}>
-      <Text>테스트</Text>
+      <View style={styles.testHeader}>
+        <View style={styles.testLogoContainer}>
+          <Image style={styles.testLogo} source={testMainLogo} />
+        </View>
+        <View style={styles.testToolbarContainer}></View>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   testConteiner: {
-    backgroundColor: 'powderblue',
+    backgroundColor: 'white',
+    flex: 1,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  testHeader: {
+    top: 0,
+    backgroundColor: 'black',
+    height: 64,
+    flexDirection: 'row',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  testLogoContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'steelblue',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  testLogo: {width: '50%', resizeMode: 'contain'},
+  testToolbarContainer: {flex: 1, backgroundColor: 'powderblue'},
+  // sectionContainer: {
+  //   marginTop: 32,
+  //   paddingHorizontal: 24,
+  // },
+  // sectionTitle: {
+  //   fontSize: 24,
+  //   fontWeight: '600',
+  // },
+  // sectionDescription: {
+  //   marginTop: 8,
+  //   fontSize: 18,
+  //   fontWeight: '400',
+  // },
+  // highlight: {
+  //   fontWeight: '700',
+  // },
 });
 
 export default MyCardsScreen;

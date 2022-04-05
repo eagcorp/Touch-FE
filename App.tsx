@@ -26,7 +26,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import MyCardsScreen from './src/screens/myCardsScreen';
+import MyCardsScreen from './src/screens/MyCardsScreen';
 
 const Section: React.FC<{
   title: string;
