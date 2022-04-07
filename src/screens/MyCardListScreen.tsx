@@ -11,14 +11,16 @@ import {
 import testMainLogo from '../../assets/images/test_main_logo.png';
 import qs from 'qs';
 import {withSafeAreaInsets} from 'react-native-safe-area-context';
+import {myCardDto} from '../dto/myCardDTO';
 
 const MyCardListScreen = props => {
   const [myCardList, setMyCardList] = useState([]);
 
+  // TODO
   useEffect(() => {
     axios
       .post(
-        'http://mi07.cafe24.com/bns/api/select_my_card.php',
+        'http://mi07.cafe24.com/bns2022/api/select_my_card.php',
         qs.stringify({
           user_qrnum: 'eaguser:L5qGnVOWL4Pj',
         }),
@@ -27,7 +29,7 @@ const MyCardListScreen = props => {
         // TODO: data.data...
         setMyCardList(response.data.data);
       });
-  }, []);
+  }, [props.route.params]);
 
   return (
     <>
@@ -38,9 +40,14 @@ const MyCardListScreen = props => {
           </View>
           <View style={styles.toolbarContainer}></View>
         </View>
+        {/* TODO: myCard 처리 */}
         <TouchableOpacity
           style={styles.goNewMyCardScreenButton}
-          onPress={() => props.navigation.navigate('NewMyCardScreen')}>
+          onPress={() =>
+            props.navigation.navigate('NewMyCardScreen', {
+              myCard: {},
+            })
+          }>
           <Text>추가</Text>
         </TouchableOpacity>
         {/* TODO: 컴포넌트 분리 */}
@@ -64,7 +71,7 @@ const MyCardListScreen = props => {
         <TouchableOpacity
           style={styles.goTestScreenButton}
           onPress={() => props.navigation.navigate('TestScreen')}>
-          <Text>테스트 스크린 이동</Text>
+          <Text style={styles.goTestScreenButtonText}>테스트 스크린 이동</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -86,20 +93,26 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'steelblue',
+    // backgroundColor: 'steelblue',
   },
   logo: {width: '50%', resizeMode: 'contain'},
-  toolbarContainer: {flex: 7, backgroundColor: 'powderblue'},
+  toolbarContainer: {
+    flex: 7,
+    //backgroundColor: 'powderblue'
+  },
   goTestScreenButton: {
     position: 'absolute',
     bottom: 50,
     right: 20,
-    backgroundColor: 'skyblue',
+    backgroundColor: 'black',
     borderRadius: 10,
     padding: 10,
   },
+  goTestScreenButtonText: {
+    color: '#FFFFFF',
+  },
   listItem: {
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
   },
   goNewMyCardScreenButton: {
     backgroundColor: 'skyblue',

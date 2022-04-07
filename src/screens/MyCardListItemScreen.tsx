@@ -12,6 +12,7 @@ import qs from 'qs';
 
 const MyCardListItemScreen = props => {
   const myCard = props.route.params.myCard;
+
   return (
     <>
       {/* TODO: 헤더  및 수정버튼 */}
@@ -19,7 +20,9 @@ const MyCardListItemScreen = props => {
         <TouchableOpacity
           style={styles.goNewMyCardScreenButton}
           onPress={() =>
-            props.navigation.navigate('NewMyCardScreen', {myCard: myCard})
+            props.navigation.navigate('NewMyCardScreen', {
+              myCard: myCard,
+            })
           }>
           <Text>수정</Text>
         </TouchableOpacity>
