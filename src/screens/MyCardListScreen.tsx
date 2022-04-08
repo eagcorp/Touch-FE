@@ -27,6 +27,8 @@ const MyCardListScreen = props => {
       )
       .then(response => {
         // TODO: data.data...
+        // console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+        // console.log(response.data.data);
         setMyCardList(response.data.data);
       });
   }, [props.route.params]);
@@ -60,6 +62,7 @@ const MyCardListScreen = props => {
                 onPress={() =>
                   props.navigation.navigate('MyCardListItemScreen', {
                     myCard: myCard,
+                    userUniqueNum: 'eaguser:L5qGnVOWL4P',
                   })
                 }>
                 <Text>이름: {myCard.user_name}</Text>
